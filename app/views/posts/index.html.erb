@@ -1,0 +1,49 @@
+<div class="posts-template">
+  <div class="menu">
+    <div class="wrapper-menu">
+      <%= image_tag "twitter-logo", size: "50" %>
+      <%= button_to "Log out", destroy_user_session_path, method: :delete, class: "color-blue" if user_signed_in? %>
+    </div>
+  </div>
+  <div class="content">
+    <div class="posts">
+      <%= form_with scope: current_user.posts.new, url: posts_path, class: "card" do |form| %>
+        <div class="profile-picture margin-right-5">
+            <%= image_tag "profile", class: "profile" %>
+          </div>
+        <div class="post-content">
+          <%= form.text_field :content, placeholder: "¡¿Qué esta pasando?!", class: "post-input" %>
+          <div class="wrap-submit">
+            <%= form.submit "Postear", class: "submit cta bg-blue color-white"  %>
+          </div>
+        </div>
+      <% end %>
+      <% @posts.each do | post | %>
+        <div class="card">
+          <div class="profile-picture margin-right-5">
+            <%= image_tag "profile", class: "profile" %>
+          </div>
+          <div class="w-100">
+            <p class="margin-0 margin-bottom-5 color-gray"><%= username %> · <%= calculate_datetime(post) %></p>
+            <p class="margin-0 margin-bottom-16"><%= post.content %></p>
+            <div class="post-actions">
+              <%= button_tag type: 'button', class: "action-btn blue-hover", id:"comment" do %>
+                <%= render_icon "comment_icon.svg", width: "17px", height: "17px" %>
+              <% end %>
+              <%= button_tag type: 'button', class: "action-btn blue-hover" do %>
+                <%= image_tag "retweet-icon", size: "17", style:"color:white;" %>
+              <% end %>
+              <%= render partial: "likes", locals: { post: post } %>
+              <%= render partial: "saves", locals: { post: post } %>
+              <%= button_tag type: 'button', class: "action-btn blue-hover" do %>
+                <%= image_tag "share-icon", size: "17", style:"color:white;" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="search">
+    </div>
+  </div>
+</div>

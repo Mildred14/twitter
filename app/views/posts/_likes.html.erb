@@ -1,0 +1,14 @@
+<% if (like = post.likes.find_by(user: current_user)).present? %>
+  <%= button_to post_like_path(post_id: post.id, id: like.id), method: 'delete', class: "action-btn blue-hover" do %>
+    <div class="blue-hover">
+      <%= image_tag "heart-icon", size: "17", style:"color:white;" %>
+    </div>
+    <p class="color-gray"><%= post.likes_count %></p>
+  <% end %>
+  <% else %>
+
+  <%= button_to post_likes_path(post.id), class: "action-btn blue-hover" do %>
+    <%= image_tag "heart-icon", size: "17", style:"color:white;" %>
+    <p class="color-gray"><%= post.likes_count %></p>
+  <% end %>
+<% end %>

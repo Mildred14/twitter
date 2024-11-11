@@ -1,0 +1,35 @@
+.post-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.post-input {
+  background-color: transparent;
+  border: transparent;
+  color: white;
+  font-size: 24px;
+  padding: 12px 0px;
+  &:focus {
+    border: transparent;
+    outline: none;
+  }
+}
+
+.submit {
+  width: 100px;
+  border: none;
+}
+
+.wrap-submit {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}
+
+.wrapper-menu {
+  margin: 10px 0 0 50px;
+}
+
+.menu {
+}

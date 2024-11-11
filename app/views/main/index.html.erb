@@ -1,0 +1,32 @@
+<div class="index">
+  <div class="logo">
+    <%=image_tag("twitter-logo", class: "logo-img") %>
+  </div>
+  <div class="wrap-login">
+    <div class="login">
+      <h1 class="kanit-semibold f-72 margin-0">Happening now</h1>
+      <h3 class="kanit-semibold f-36">Join today.</h3>
+      <div class="login-actions">
+        <% {google: user_google_oauth2_omniauth_authorize_path, apple: 'http://www.google.com'}.map do |key, value| %>
+          <%= button_to value, target: "_blank", class:"cta bg-white clean-link margin-bottom-16 no-border" do %>
+            <%= image_tag("#{key}-logo", size: "16", class: "margin-right-5") %>
+            <p class="color-black">Sign up with <%= key.to_s.titleize %></p>
+          <% end %>
+        <% end %>
+        <div class="divided-by">
+          <hr class="line"/>
+          <p>or</p>
+          <hr class="line margin-left-10"/>
+        </div>
+        <%= link_to "Create an account", new_user_registration_path, class:"cta bg-blue color-white clean-link margin-bottom-5 no-border" %>
+        <p class="agreement-policy-text margin-0">
+          By signing up, you agree to the <%= link_to 'Terms of Service', "#", class: "link" %> and
+          <%= link_to 'Privacy Policy', "#", class: "link" %>,
+          including <%= link_to 'Cookie Use.', "#", class: "link" %>
+        </p>
+        <h3 class="kanit-semibold f-18">Already have an account?</h3>
+        <%= link_to "Sign in", new_user_session_path, class:"cta bg-transparent color-blue border-gray clean-link margin-bottom-5" %>
+      </div>
+    </div>
+  </div>
+<div>

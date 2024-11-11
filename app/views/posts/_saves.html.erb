@@ -1,0 +1,15 @@
+<% if (save = post.saves.find_by(user: current_user)).present? %>
+  <%= button_to post_saved_path(post_id: post.id, id: save.id), method: 'delete', class: "action-btn blue-hover" do %>
+    <%= image_tag "save-icon", size: "17", style:"color:white;" %>
+    <p class="color-gray">
+      <%= post.saves_count %>
+    </p>
+  <% end %>
+  <% else %>
+  <%= button_to post_saved_index_path(post.id), class: "action-btn blue-hover" do %>
+    <%= image_tag "save-icon", size: "17", style:"color:white;" %>
+    <p class="color-gray">
+      <%= post.saves_count %>
+    </p>
+  <% end %>
+<% end %>

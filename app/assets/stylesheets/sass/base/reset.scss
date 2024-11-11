@@ -1,0 +1,19 @@
+@font-face {
+  font-family: "Roboto Regular";
+  src: font-url("Regular.ttf");
+}
+
+@font-face {
+  font-family: "Kanit Semibold";
+  src: font-url("Kanit-SemiBold.ttf");
+}
+
+@font-face {
+  font-family: "Kanit Medium";
+  src: font-url("Kanit-Medium.ttf");
+}
+
+body {
+  font-family: 'Roboto Regular', serif;
+  background-color: rgb(0, 0, 0);
+}

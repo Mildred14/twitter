@@ -1,0 +1,30 @@
+.posts-template {
+  width: 100%;
+  height: 100vh;
+  color: rgb(255, 255, 255);
+  display: grid;
+  grid-template-areas: 'menu content content content';
+  position: relative
+}
+
+.menu {
+  grid-area: menu;
+  border-right: 0.5px solid rgba(147, 147, 147, 0.7);
+}
+
+.content {
+  grid-area: content;
+  overflow-y: scroll;
+  display: grid;
+  grid-template-areas: 'posts search';
+}
+
+.posts {
+  border-right: 0.5px solid rgba(147, 147, 147, 0.7);
+  grid-area: posts;
+}
+
+.search {
+  width: min-content;
+  grid-area: search;
+}
