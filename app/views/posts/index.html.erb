@@ -27,17 +27,21 @@
             <p class="margin-0 margin-bottom-5 color-gray"><%= username %> · <%= calculate_datetime(post) %></p>
             <p class="margin-0 margin-bottom-16"><%= post.content %></p>
             <div class="post-actions">
-              <%= button_tag type: 'button', class: "action-btn blue-hover", id:"comment" do %>
-                <%= render_icon "comment_icon.svg", width: "17px", height: "17px" %>
-              <% end %>
-              <%= button_tag type: 'button', class: "action-btn blue-hover" do %>
-                <%= image_tag "retweet-icon", size: "17", style:"color:white;" %>
-              <% end %>
-              <%= render partial: "likes", locals: { post: post } %>
-              <%= render partial: "saves", locals: { post: post } %>
-              <%= button_tag type: 'button', class: "action-btn blue-hover" do %>
-                <%= image_tag "share-icon", size: "17", style:"color:white;" %>
-              <% end %>
+              <div class="public-interactions">
+                <%= button_tag type: 'button', class: "action-btn color-hover blue-hover", id:"comment" do %>
+                  <%= render_icon "comment_icon.svg", width: "16", height: "16" %>
+                <% end %>
+                <%= button_tag type: 'button', class: "action-btn color-hover green-hover" do %>
+                  <%= render_icon "retweet_icon.svg", width: "18", height: "18" %>
+                <% end %>
+                <%= render partial: "likes", locals: { post: post } %>
+              </div>
+              <div class="private-interactions">
+                <%= render partial: "saves", locals: { post: post } %>
+                <%= button_tag type: 'button', class: "action-btn color-hover blue-hover" do %>
+                  <%= image_tag "share-icon", size: "15", style:"color:white;" %>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>

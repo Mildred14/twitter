@@ -24,24 +24,65 @@
 
 .action-btn {
   background-color: transparent;
-  color: white;
+  color: rgba(147, 147, 147, 0.7);
   border: 0px;
   cursor: pointer;
   border-radius: 40px;
-  width: 60px;
-  height: 30px;
   display: flex;
   align-items: center;
+  position: relative;
+  width: 40px;
 
-  &.blue-hover {
+  &.color-hover:before {
+    content: '';
     width: 30px;
-    height: 30px;
     border-radius: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
-    &:hover {
-      background-color: rgba(28, 155, 239, 0.4);
+    position: absolute;
+    right: 11px;
+    &.red-hover {
+      background-color: rgba(249, 24, 128, 0.4);
+    }
+    &.green-hover {
+      background-color: rgba(0, 186, 124, 0.4);
+    }
+    &.blue-hover {
+      background-color: rgba(29, 155, 240, 0.4);
+    }
+  }
+
+  &.color-hover:hover:before {
+    height: 30px;
+  }
+}
+
+.action-btn:hover {
+  &.red-hover {
+    color: rgb(249, 24, 128);
+    & > svg {
+      fill: rgb(249, 24, 128);
+      & > path {
+        fill: rgb(249, 24, 128);
+      }
+    }
+  }
+
+  &.green-hover > svg {
+    fill: rgb(0, 186, 124);
+    & > g {
+      fill: rgb(0, 186, 124);
+    }
+  }
+
+  &.blue-hover {
+    color: rgb(29, 155, 240);
+    & > svg {
+      fill: rgb(29, 155, 240);
+      & > path {
+        fill: rgb(29, 155, 240);
+      }
     }
   }
 }

@@ -16,4 +16,25 @@
 .post-actions {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.public-interactions {
+  width: 75%;
+  height: fit-content;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.private-interactions {
+  display: flex;
+
+  & > .action-btn, .button_to  {
+    width: 30px;
+  }
+
+  & > .action-btn.color-hover:before {
+    right: 1px !important;
+  }
 }
