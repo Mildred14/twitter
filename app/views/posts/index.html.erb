@@ -9,10 +9,10 @@
     <div class="posts">
       <%= form_with scope: current_user.posts.new, url: posts_path, class: "card" do |form| %>
         <div class="profile-picture margin-right-5">
-            <%= image_tag "profile", class: "profile" %>
-          </div>
+          <%= image_tag "profile", class: "profile" %>
+        </div>
         <div class="post-content">
-          <%= form.text_field :content, placeholder: "¡¿Qué esta pasando?!", class: "post-input" %>
+          <%= form.text_field :content, placeholder: "¡¿Qué esta pasando?!", class: "post-input", id: "post-content" %>
           <div class="wrap-submit">
             <%= form.submit "Postear", class: "submit cta bg-blue color-white"  %>
           </div>
@@ -44,6 +44,17 @@
               </div>
             </div>
           </div>
+          <%= form_with model: post.comments.new, url: post_comments_path(post.id), class: "card" do |form| %>
+            <div class="profile-picture margin-right-5">
+              <%= image_tag "profile", class: "profile" %>
+            </div>
+            <div class="post-content">
+              <%= form.text_field :content, placeholder: "¡¿Qué esta pasando?!", class: "post-input" %>
+              <div class="wrap-submit">
+                <%= form.submit "Postear", class: "submit cta bg-blue color-white"  %>
+              </div>
+            </div>
+          <% end %>
         </div>
       <% end %>
     </div>
@@ -51,3 +62,5 @@
     </div>
   </div>
 </div>
+
+<%= javascript_pack_tag 'comments_behavior'%>
