@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :posts do
       resources :likes
       resources :saved
+      resources :comments, only: [:create]
     end
   end
   root to: 'main#index'

@@ -11,6 +11,11 @@
   </head>
 
   <body class="margin-0">
+    <% if flash.now[:alert].present? %>
+      <p><%= flash.now[:alert] %></p>
+    <% elsif flash.now[:notice].present?  %>
+      <p><%= flash.now[:notice] %></p>
+    <% end %>
     <%= yield %>
   </body>
 </html>

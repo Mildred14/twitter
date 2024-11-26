@@ -9,10 +9,10 @@
     <div class="posts">
       <%= form_with scope: current_user.posts.new, url: posts_path, class: "card" do |form| %>
         <div class="profile-picture margin-right-5">
-            <%= image_tag "profile", class: "profile" %>
-          </div>
+          <%= image_tag "profile", class: "profile" %>
+        </div>
         <div class="post-content">
-          <%= form.text_field :content, placeholder: "¡¿Qué esta pasando?!", class: "post-input" %>
+          <%= form.text_field :content, placeholder: "¡¿Qué esta pasando?!", class: "post-input", id: "post-content" %>
           <div class="wrap-submit">
             <%= form.submit "Postear", class: "submit cta bg-blue color-white"  %>
           </div>
@@ -27,19 +27,34 @@
             <p class="margin-0 margin-bottom-5 color-gray"><%= username %> · <%= calculate_datetime(post) %></p>
             <p class="margin-0 margin-bottom-16"><%= post.content %></p>
             <div class="post-actions">
-              <%= button_tag type: 'button', class: "action-btn blue-hover", id:"comment" do %>
-                <%= render_icon "comment_icon.svg", width: "17px", height: "17px" %>
-              <% end %>
-              <%= button_tag type: 'button', class: "action-btn blue-hover" do %>
-                <%= image_tag "retweet-icon", size: "17", style:"color:white;" %>
-              <% end %>
-              <%= render partial: "likes", locals: { post: post } %>
-              <%= render partial: "saves", locals: { post: post } %>
-              <%= button_tag type: 'button', class: "action-btn blue-hover" do %>
-                <%= image_tag "share-icon", size: "17", style:"color:white;" %>
-              <% end %>
+              <div class="public-interactions">
+                <%= button_tag type: 'button', class: "action-btn color-hover blue-hover", id:"comment" do %>
+                  <%= render_icon "comment_icon.svg", width: "16", height: "16" %>
+                <% end %>
+                <%= button_tag type: 'button', class: "action-btn color-hover green-hover" do %>
+                  <%= render_icon "retweet_icon.svg", width: "18", height: "18" %>
+                <% end %>
+                <%= render partial: "likes", locals: { post: post } %>
+              </div>
+              <div class="private-interactions">
+                <%= render partial: "saves", locals: { post: post } %>
+                <%= button_tag type: 'button', class: "action-btn color-hover blue-hover" do %>
+                  <%= image_tag "share-icon", size: "15", style:"color:white;" %>
+                <% end %>
+              </div>
             </div>
           </div>
+          <%= form_with model: post.comments.new, url: post_comments_path(post.id), class: "card" do |form| %>
+            <div class="profile-picture margin-right-5">
+              <%= image_tag "profile", class: "profile" %>
+            </div>
+            <div class="post-content">
+              <%= form.text_field :content, placeholder: "¡¿Qué esta pasando?!", class: "post-input" %>
+              <div class="wrap-submit">
+                <%= form.submit "Postear", class: "submit cta bg-blue color-white"  %>
+              </div>
+            </div>
+          <% end %>
         </div>
       <% end %>
     </div>
@@ -47,3 +62,5 @@
     </div>
   </div>
 </div>
+
+<%= javascript_pack_tag 'comments_behavior'%>
